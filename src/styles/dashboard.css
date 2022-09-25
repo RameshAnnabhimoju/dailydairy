@@ -1,0 +1,23 @@
+.container-d{
+    
+    background-image: linear-gradient(lightblue,rgb(206, 233, 242));
+    background-size: contain;
+    height: 100%;
+}
+.parent-container{
+    margin: 0 25%;
+    padding: 10px 25px;
+    background-color: rgb(206, 233, 242);
+}
+.top-container{
+    display: flex;
+    justify-content: space-between;
+}
+.milk-row,.curd-row{
+    display: flex;
+    margin: 0 20% 20% 0;
+    justify-content: space-between;
+}
+.table-cell{
+    padding: 0 80px;
+}
