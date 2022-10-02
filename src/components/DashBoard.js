@@ -22,7 +22,6 @@ const DashBoard = () => {
     totalBasketAmount: 0,
     totalBillingAmount: 0,
   };
-  const [toggleBasketEdit, setToggleBasketEdit] = useState(true);
   const [toggleBillingEdit, setToggleBillingEdit] = useState(true);
   const [billingValues, setBillingValues] = useState(initialBillingValues);
   const theme = createTheme({
@@ -46,11 +45,16 @@ const DashBoard = () => {
     </Button>
   );
   const editButton = (
-    <Button type="button" name="edit" variant="outlined" size="small">
+    <Button
+      type="button"
+      name="edit"
+      variant="outlined"
+      size="small"
+      onClick={editToggle}
+    >
       Edit
     </Button>
   );
-
   function billingHandleChange(e) {
     const { name, value } = e.target;
     setBillingValues({ ...billingValues, [name]: parseInt(value) });
@@ -83,6 +87,10 @@ const DashBoard = () => {
       curdNumber: billingValues.curdNumber + 1,
     });
   }
+  function editToggle(e) {
+    e.preventDefault();
+    setToggleBillingEdit(true);
+  }
   function basketFormHandle(e) {
     e.preventDefault();
     const { milkQuantity, milkNumber, curdQuantity, curdNumber, billCycle } =
@@ -95,6 +103,7 @@ const DashBoard = () => {
       totalBasketAmount: basketAmount,
       totalBillingAmount: billingAmount,
     });
+    setToggleBillingEdit(false);
   }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -127,6 +136,7 @@ const DashBoard = () => {
                     <div className="milk-row">
                       <Button disabled>Milk</Button>
                       <Select
+                        disabled={!toggleBillingEdit}
                         name="milkQuantity"
                         size="small"
                         value={billingValues.milkQuantity}
@@ -139,7 +149,10 @@ const DashBoard = () => {
                         <MenuItem value={1000}>1 L</MenuItem>
                         <MenuItem value={5000}>5 L</MenuItem>
                       </Select>
-                      <ButtonGroup sx={{ margin: "0 10px" }}>
+                      <ButtonGroup
+                        sx={{ margin: "0 10px" }}
+                        disabled={!toggleBillingEdit}
+                      >
                         <Button size="small" onClick={milkDecrement}>
                           -
                         </Button>
@@ -156,6 +169,7 @@ const DashBoard = () => {
                     <div className="curd-row">
                       <Button disabled>Curd</Button>
                       <Select
+                        disabled={!toggleBillingEdit}
                         name="curdQuantity"
                         size="small"
                         value={billingValues.curdQuantity}
@@ -168,7 +182,11 @@ const DashBoard = () => {
                         <MenuItem value={1000}>1 L</MenuItem>
                         <MenuItem value={5000}>5 L</MenuItem>
                       </Select>
-                      <ButtonGroup size="small" sx={{ margin: "0 10px" }}>
+                      <ButtonGroup
+                        size="small"
+                        sx={{ margin: "0 10px" }}
+                        disabled={!toggleBillingEdit}
+                      >
                         <Button size="small" onClick={curdDecrement}>
                           -
                         </Button>
@@ -182,7 +200,6 @@ const DashBoard = () => {
                         </Button>
                       </ButtonGroup>
                     </div>
-                    {toggleBasketEdit ? doneButton : editButton}
                   </form>
                 </div>
                 <h3>
@@ -193,6 +210,7 @@ const DashBoard = () => {
                 <h2>Billing Cycle</h2>
                 <form onSubmit={basketFormHandle}>
                   <Select
+                    disabled={!toggleBillingEdit}
                     sx={{ margin: "0 15px" }}
                     name="billCycle"
                     size="small"
