@@ -71,6 +71,7 @@ const Login = () => {
             <p className="error">{loginErrors.email}</p>
 
             <TextField
+              type="password"
               className="input"
               id="standard-basic"
               label="Password"

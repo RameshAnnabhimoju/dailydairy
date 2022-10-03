@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import ValidateForm from "./ValidateForm";
 
 import {
@@ -24,10 +23,6 @@ const Signup = (props) => {
   const [userValues, setUserValues] = useState(initialValues);
   const [userErrors, setUserErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  // const navigate = useNavigate();
-  const handleClose = () => {
-    props.setOpen(false);
-  };
   function handleChange(e) {
     const { id, value } = e.target;
     setUserValues({ ...userValues, [id]: value });
@@ -36,22 +31,15 @@ const Signup = (props) => {
     e.preventDefault();
     setUserErrors(ValidateForm(userValues));
     setIsSubmit(true);
-  }
-  useEffect(() => {
     if (Object.keys(userErrors).length === 0 && isSubmit) {
+      props.setOpen(false);
       localStorage.setItem("dailyDairyUserValues", JSON.stringify(userValues));
       alert("Signup Sucessful, login using email");
-      // navigate("/");
     }
-  }, [userErrors]);
+  }
 
   return (
-    <Dialog
-      fullWidth={true}
-      scroll="body"
-      open={props.open}
-      onClose={handleClose}
-    >
+    <Dialog fullWidth={true} scroll="body" open={props.open}>
       <DialogTitle sx={{ textAlign: "center" }}>SignUp</DialogTitle>
       <DialogContent>
         <Box sx={{ textAlign: "center" }}>
@@ -111,6 +99,7 @@ const Signup = (props) => {
             <p className="error">{userErrors.email}</p>
 
             <TextField
+              type="password"
               id="password"
               label="Password"
               variant="filled"
