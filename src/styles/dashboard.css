@@ -1,13 +1,16 @@
 .container-d{
     
-    background-image: linear-gradient(lightblue,rgb(206, 233, 242));
-    background-size: contain;
+    /* background-image: linear-gradient(rgb(213, 242, 221),rgb(206, 233, 242));
+    background-size: contain; */
+    background-image: url(../../public/bddbg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
 }
 .parent-container{
     margin: 0 25%;
     padding: 10px 25px;
-    background-color: rgb(206, 233, 242);
+    background-color: rgb(229, 247, 255);
 }
 .top-container{
     display: flex;
@@ -20,4 +23,15 @@
 }
 .table-cell{
     padding: 0 80px;
+}
+.nav-bar{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(160, 233, 187);
+}
+#account{
+    margin: auto 0;
+}
+.nav-logo{
+    margin: 10px;
 }

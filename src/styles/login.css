@@ -2,8 +2,9 @@
     font-family: 'Rubik', sans-serif;
 }
 .container{
-    background-image: linear-gradient(lightblue,rgb(206, 233, 242));
-    background-size: contain;
+    background-image: url(../../public/bddbg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
 }
 .error{

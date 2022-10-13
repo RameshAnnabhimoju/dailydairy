@@ -47,10 +47,14 @@ const Login = () => {
             p: 2,
             minWidth: 300,
             textAlign: "center",
-            backgroundColor: "rgb(206, 233, 242)",
+            backgroundColor: "rgb(229, 247, 255)",
           }}
         >
-          <Paper variant="elevation" elevation={2} style={{ padding: 20 }}>
+          <Paper
+            variant="elevation"
+            elevation={2}
+            style={{ padding: 20, backgroundColor: "rgb(160, 233, 187)" }}
+          >
             <Typography variant="h3">Daily Dairy</Typography>
             <Typography variant="subHeading">
               Now Dairy at your doorstep !

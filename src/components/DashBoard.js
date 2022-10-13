@@ -123,6 +123,19 @@ const DashBoard = () => {
   }
   return (
     <div className="container-d">
+      <div className="nav-bar">
+        <h1 className="nav-logo">Daily Dairy</h1>
+        <Button
+          size="medium"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          id="account"
+        >
+          Account <AccountCircleIcon />
+        </Button>
+      </div>
       <div className="parent-container">
         <ThemeProvider theme={theme}>
           <div className="top-container">
@@ -236,15 +249,6 @@ const DashBoard = () => {
             <div className="right-container">
               <br />
 
-              <Button
-                size="medium"
-                aria-controls={open ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-              >
-                Account <AccountCircleIcon />
-              </Button>
               <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
